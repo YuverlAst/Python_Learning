@@ -1,0 +1,17 @@
+def mergesort(seq):
+    mid = len(seq) // 2
+    if len(seq) <= 1:
+        return seq
+    left = mergesort(seq[:mid])
+    right = mergesort(seq[mid:])
+    res = []
+    while left and right:
+        if left[-1] <= right[-1]:
+            res.append(right.pop())
+        else:
+            res.append(left.pop())
+    res.reverse()
+
+    return left + right + res
+
+print(mergesort([1,6,12,3,8]))
